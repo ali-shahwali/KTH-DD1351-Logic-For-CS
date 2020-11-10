@@ -97,11 +97,6 @@ check_line(_, _, [_, neg(X), mt(I,J)], PrevLines) :-
 	member([J, neg(Y), _], PrevLines).
 
 %%% proof by contradiction
-check_line(_, _, [_, neg(X), pbc(I,J)], PrevLines) :-
-	member(AList, PrevLines),
-	member([I, X, assumption], AList),
-	member([J, cont, _], AList).
-
 check_line(_, _, [_, X, pbc(I,J)], PrevLines) :-
 	member(AList, PrevLines),
 	member([I, neg(X), assumption], AList),
@@ -109,7 +104,6 @@ check_line(_, _, [_, X, pbc(I,J)], PrevLines) :-
 
 %%% law of excluded middle
 check_line(_, _, [_, or(X, neg(X)), lem], _).
-
 
 %%% assumption (open box)
 check_line(Prems, Goal, [[_,_,assumption]|Tail], PrevLines) :-
