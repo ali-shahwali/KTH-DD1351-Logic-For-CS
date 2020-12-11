@@ -46,19 +46,19 @@ check(_, _, S, U, ag(_)) :-
 
 % AG 2.
 check(T, L, S, U, ag(X)):-
-  \+member(S, U),                                         %s får inte tillhöra U.
-  check(T, L, S, [], X),                %starttillstånd
+  \+member(S, U),                                          %s får inte tillhöra U.
+  check(T, L, S, [], X),                                   %starttillstånd
   check_transAll(T, L, S, [S|U], ag(X)).
 
 % AF 1,
 check(T, L, S, U, af(X)):-
   \+member(S,U),                                        % s får inte tillhöra U.
-  check(T, L, S, [], X).                          % kollar att vi har premissen.
+  check(T, L, S, [], X).                                % kollar att vi har premissen.
 
 % AF 2
 check(T, L, S, U, af(X)):-
   \+member(S, U),
-  check_transAll(T, L, S, [S|U], af(X)).           % bygger up
+  check_transAll(T, L, S, [S|U], af(X)).                % bygger up
 
 
 %%% For some next states
